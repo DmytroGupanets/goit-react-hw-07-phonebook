@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { removeContactById } from "../../../redux/contacts/contactsActions";
+import { removeContactOperation } from "../../../redux/contacts/contactsOperations";
 import styles from "./ContactsListItem.module.css";
 
-const ContactsListItem = ({ name, number, id, removeContactById }) => {
+const ContactsListItem = ({ name, number, id, removeContactOperation }) => {
   const removeItem = () => {
-    removeContactById(id);
+    removeContactOperation(id);
   };
   return (
     <li className={styles.contactsItem}>
@@ -23,4 +23,4 @@ const ContactsListItem = ({ name, number, id, removeContactById }) => {
   );
 };
 
-export default connect(null, { removeContactById })(ContactsListItem);
+export default connect(null, { removeContactOperation })(ContactsListItem);

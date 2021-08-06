@@ -1,17 +1,18 @@
 import { createAction } from "@reduxjs/toolkit";
 
-export const addContact = createAction("addContact");
-export const removeContactById = createAction("removeContactById");
+export const fetchContactsRequest = createAction(
+  "contacts/fetchContactsRequest"
+);
+export const fetchContactsSuccess = createAction(
+  "contacts/fetchContactsSuccess"
+);
+export const fetchContactsError = createAction("contacts/fetchContactsError");
 
-// ================================== Redux =================================
-// import { ADD_CONTACT, REMOVE_CONTACT_BY_ID } from "../constants/constants";
-
-// export const addContact = (contact) => ({
-//   type: ADD_CONTACT,
-//   payload: contact,
-// });
-
-// export const removeContactById = (id) => ({
-//   type: REMOVE_CONTACT_BY_ID,
-//   payload: id,
-// });
+export const addContactRequest = createAction("contacts/addContactRequest");
+export const addContactSuccess = createAction("contacts/addContactSucces");
+export const addContactError = createAction("contacts/addContactError");
+export const removeContactRequest = createAction(
+  "contacts/removeContacRequest"
+);
+export const removeContactSuccess = createAction("contacts/removeContacSucces");
+export const removeContactError = createAction("contacts/removeContacError");

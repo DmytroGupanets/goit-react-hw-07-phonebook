@@ -1,28 +1,39 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { addContact, removeContactById } from "./contactsActions";
+import {
+  addContactRequest,
+  addContactError,
+  addContactSuccess,
+  fetchContactsError,
+  fetchContactsRequest,
+  fetchContactsSuccess,
+  removeContactRequest,
+  removeContactSuccess,
+  removeContactError,
+} from "./contactsActions";
 
-const contactsItemReducer = createReducer([], {
-  [addContact]: (state, { payload }) => [...state, payload],
-  [removeContactById]: (state, { payload }) =>
+export const contactsItemReducer = createReducer([], {
+  [fetchContactsSuccess]: (_, { payload }) => payload,
+
+  [addContactSuccess]: (state, { payload }) => [...state, payload],
+
+  [removeContactSuccess]: (state, { payload }) =>
     state.filter((el) => el.id !== payload),
 });
 
-export default contactsItemReducer;
+export const error = createReducer("", {
+  [fetchContactsError]: (_, { payload }) => payload,
+  [addContactError]: (_, { payload }) => payload,
+  [removeContactError]: (_, { payload }) => payload,
+});
 
-// ============================== Redux =====================================
-// import { ADD_CONTACT, REMOVE_CONTACT_BY_ID } from "../constants/constants";
-
-// const contactsItemReducer = (state = [], { type, payload }) => {
-//   switch (type) {
-//     case ADD_CONTACT:
-//       return [...state, payload];
-
-//     case REMOVE_CONTACT_BY_ID:
-//       return state.filter((el) => el.id !== payload);
-
-//     default:
-//       return state;
-//   }
-// };
-
-// export default contactsItemReducer;
+export const loader = createReducer(false, {
+  [fetchContactsRequest]: () => true,
+  [fetchContactsSuccess]: () => false,
+  [fetchContactsError]: () => false,
+  [addContactRequest]: () => true,
+  [addContactSuccess]: () => false,
+  [addContactError]: () => false,
+  [removeContactRequest]: () => true,
+  [removeContactSuccess]: () => false,
+  [removeContactError]: () => false,
+});

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { updateFilterValue } from "../../redux/filter/filterActions";
+import { getFilterValue } from "../../redux/selector/contacts-selector";
 
 import styles from "./Filter.module.css";
 
@@ -24,8 +25,8 @@ const Filter = ({ updateFilterValue, filterValue }) => {
   );
 };
 
-const mapStateToProps = (state, props) => ({
-  filterValue: state.contacts.filter,
+const mapStateToProps = (state) => ({
+  filterValue: getFilterValue(state),
 });
 
 export default connect(mapStateToProps, { updateFilterValue })(Filter);

@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addContact } from "../../redux/contacts/contactsActions";
-import { v4 as uuidv4 } from "uuid";
+import {
+  addContactOperation,
+  fetchContactsOperation,
+} from "../../redux/contacts/contactsOperations";
+import { getContacts } from "../../redux/selector/contacts-selector";
 import styles from "./ContactForm.module.css";
 
 class ContactForm extends Component {
   state = { name: "", number: "" };
+
+  componentDidMount() {
+    this.props.fetchContactsOperation();
+  }
 
   onHandleChange = (e) => {
     const { name, value } = e.target;
@@ -16,7 +23,6 @@ class ContactForm extends Component {
     e.preventDefault();
 
     const contact = {
-      id: uuidv4(),
       name: this.state.name,
       number: this.state.number,
     };
@@ -35,7 +41,7 @@ class ContactForm extends Component {
       return alert(`Phone number ${this.state.number} is already in contacts`);
     }
 
-    this.props.addContact(contact);
+    this.props.addContactOperation(contact);
     this.setState({ name: "", number: "" });
   };
 
@@ -75,7 +81,10 @@ class ContactForm extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  contacts: state.contacts.items,
+  contacts: getContacts(state),
 });
 
-export default connect(mapStateToProps, { addContact })(ContactForm);
+export default connect(mapStateToProps, {
+  addContactOperation,
+  fetchContactsOperation,
+})(ContactForm);
