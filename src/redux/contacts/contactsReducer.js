@@ -22,8 +22,11 @@ export const contactsItemReducer = createReducer([], {
 
 export const error = createReducer("", {
   [fetchContactsError]: (_, { payload }) => payload,
+  [fetchContactsRequest]: (_, { payload }) => "",
   [addContactError]: (_, { payload }) => payload,
+  [addContactRequest]: (_, { payload }) => "",
   [removeContactError]: (_, { payload }) => payload,
+  [removeContactRequest]: (_, { payload }) => "",
 });
 
 export const loader = createReducer(false, {

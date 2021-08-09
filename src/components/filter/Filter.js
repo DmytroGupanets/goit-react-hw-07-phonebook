@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
+import { getFilterValue } from "../../redux/contacts/contacts-selector";
 import { updateFilterValue } from "../../redux/filter/filterActions";
-import { getFilterValue } from "../../redux/selector/contacts-selector";
 
 import styles from "./Filter.module.css";
 

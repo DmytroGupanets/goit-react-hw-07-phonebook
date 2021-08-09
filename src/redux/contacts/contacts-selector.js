@@ -7,7 +7,6 @@ export const getLoaderCondition = (state) => state.contacts.isLoading;
 export const getFilteredContacts = createSelector(
   [getContacts, getFilterValue],
   (contacts, filterValue) => {
-    console.log(contacts);
     return contacts.filter((contact) =>
       contact.name.toLowerCase().includes(filterValue.toLowerCase())
     );

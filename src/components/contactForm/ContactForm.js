@@ -4,7 +4,7 @@ import {
   addContactOperation,
   fetchContactsOperation,
 } from "../../redux/contacts/contactsOperations";
-import { getContacts } from "../../redux/selector/contacts-selector";
+import { getContacts } from "../../redux/contacts/contacts-selector";
 import styles from "./ContactForm.module.css";
 
 class ContactForm extends Component {

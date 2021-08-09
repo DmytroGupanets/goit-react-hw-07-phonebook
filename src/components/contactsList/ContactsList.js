@@ -6,7 +6,7 @@ import {
   getFilteredContacts,
   getFilterValue,
   getLoaderCondition,
-} from "../../redux/selector/contacts-selector";
+} from "../../redux/contacts/contacts-selector";
 
 const ContactList = ({ isLoading, filteredContacts }) => {
   return (
